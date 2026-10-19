@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Phone, Menu, X, Car, ArrowRight } from "lucide-react";
-import { COMPANY_INFO } from "../data/travelData";
+import { useLocation, Link, useNavigate } from "react-router-dom";
+import { Menu, X, Car, ArrowRight } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Neat, single-word & concise nav items so they never wrap or crowd
   const navLinks = [
     { name: "Home", href: "/#home" },
     { name: "Services", href: "/#services" },
@@ -29,7 +30,13 @@ export default function Navbar() {
   const handleNavClick = (href) => {
     setMobileMenuOpen(false);
     if (location.pathname !== "/" && href.startsWith("/#")) {
-      window.location.href = href;
+      navigate(href);
+    } else if (href.startsWith("/#")) {
+      const targetId = href.replace("/#", "");
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -37,60 +44,61 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-slate-950/95 backdrop-blur-md shadow-2xl border-b border-slate-800/80 py-3.5"
-          : "bg-slate-950/75 backdrop-blur-sm py-5 border-b border-white/5"
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/90 py-3"
+          : "bg-white py-4 border-b border-slate-100 shadow-2xs"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-6">
           
-          {/* Brand Logo */}
-          <a
-            href="/#home"
+          {/* Brand Logo - Clean, aligned, no overlapping pills */}
+          <Link
+            to="/#home"
             onClick={() => handleNavClick("/#home")}
-            className="flex items-center gap-3 group focus:outline-none"
+            className="flex items-center gap-2.5 shrink-0 group focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-amber-400 flex items-center justify-center shadow-sm shadow-amber-400/30 group-hover:scale-105 transition-transform">
               <Car className="w-5 h-5 text-slate-950" />
             </div>
-            <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-xl sm:text-2xl text-white tracking-tight">
-                Demo<span className="text-amber-400">Travels</span>
-              </span>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-400/15 text-amber-400 border border-amber-400/30 uppercase tracking-wider hidden sm:inline">
-                24/7
+            <div className="flex flex-col">
+              <div className="flex items-center">
+                <span className="font-black text-xl sm:text-2xl text-slate-900 tracking-tight leading-none">
+                  Chennai<span className="text-amber-500">Travels</span>
+                </span>
+              </div>
+              <span className="text-[10px] text-slate-500 font-semibold tracking-wide uppercase mt-0.5">
+                Drop Taxi & Outstation
               </span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links - Single line, spacious, never wraps */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
+                className="text-sm font-bold text-slate-700 hover:text-amber-500 transition-colors whitespace-nowrap py-1 relative group"
               >
-                {link.name}
+                <span>{link.name}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-400 rounded-full group-hover:w-full transition-all duration-200"></span>
               </a>
             ))}
           </nav>
 
-          {/* Right Action CTA */}
-          <div className="hidden sm:flex items-center gap-4">
-            <a
-              href={`tel:${COMPANY_INFO.phoneRaw}`}
-              className="flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-white px-3 py-2 rounded-xl hover:bg-slate-800/60 transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span>{COMPANY_INFO.phone}</span>
-            </a>
-
+          {/* Right Action: Clean 'Book Taxi' CTA (Phone number removed as requested) */}
+          <div className="hidden sm:flex items-center shrink-0">
             <a
               href="/#book"
-              onClick={() => handleNavClick("/#book")}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick("/#book");
+              }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-sm shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap cursor-pointer"
             >
               <span>Book Taxi</span>
               <ArrowRight className="w-4 h-4" />
@@ -100,17 +108,20 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
             <a
-              href={`tel:${COMPANY_INFO.phoneRaw}`}
-              className="p-2 rounded-xl bg-slate-800 text-amber-400 hover:bg-slate-700 transition-colors"
-              aria-label="Call Hotline"
+              href="/#book"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick("/#book");
+              }}
+              className="sm:hidden px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold text-xs"
             >
-              <Phone className="w-4 h-4" />
+              Book
             </a>
 
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-slate-800 text-slate-200 hover:text-white focus:outline-none"
+              className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 focus:outline-none transition-colors"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -122,34 +133,34 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950/98 border-b border-slate-800 px-6 pt-4 pb-6 mt-3 space-y-3 backdrop-blur-xl">
-          <div className="flex flex-col space-y-1">
+        <div className="lg:hidden bg-white/98 backdrop-blur-md border-b border-slate-200 px-6 pt-3 pb-5 mt-2 space-y-3 shadow-xl animate-fadeIn">
+          <div className="flex flex-col divide-y divide-slate-100">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="py-2.5 text-base font-medium text-slate-200 hover:text-amber-400 border-b border-slate-900 transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
+                className="py-2.5 text-sm font-bold text-slate-800 hover:text-amber-500 transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          <div className="pt-3 flex flex-col gap-2.5">
+          <div className="pt-2">
             <a
               href="/#book"
-              onClick={() => handleNavClick("/#book")}
-              className="w-full py-3 rounded-xl bg-amber-400 text-slate-950 font-bold text-center text-sm shadow-md"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick("/#book");
+              }}
+              className="w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-center text-sm shadow-sm flex items-center justify-center gap-2 transition-colors block"
             >
-              Book Taxi Now
-            </a>
-            <a
-              href={`tel:${COMPANY_INFO.phoneRaw}`}
-              className="w-full py-2.5 rounded-xl bg-slate-900 text-slate-300 font-semibold text-center text-xs flex items-center justify-center gap-2 border border-slate-800"
-            >
-              <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Call {COMPANY_INFO.phone}</span>
+              <span>Book Taxi Now</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>

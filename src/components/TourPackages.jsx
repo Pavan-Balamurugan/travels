@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapPin, Clock, ArrowRight } from "lucide-react";
+import { MapPin, Clock, ArrowRight, Sparkles, Compass } from "lucide-react";
 import { TOUR_PACKAGES } from "../data/travelData";
 import PackageModal from "./PackageModal";
 
@@ -21,70 +21,83 @@ export default function TourPackages() {
   const [activePackage, setActivePackage] = useState(null);
 
   return (
-    <section id="packages" className="py-24 lg:py-32 bg-slate-900/50 relative overflow-hidden">
+    <section id="packages" className="py-10 sm:py-14 bg-white relative overflow-hidden border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header - Clean & Minimal */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-            Popular Tour Packages from <span className="text-amber-400">Chennai</span>
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold mb-2.5">
+            <Compass className="w-3.5 h-3.5 text-amber-600" />
+            <span>Weekend & Pilgrimage Getaways</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+            Popular Tour Packages from <span className="text-amber-500">Chennai</span>
           </h2>
-          <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
-            Convenient outstation trips starting from Chennai with punctual doorstep pickup and transparent billing.
+          <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed">
+            All-inclusive door-to-door packages with certified tourist drivers, punctual pickup, and transparent fares.
           </p>
         </div>
 
-        {/* Minimalist Packages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Packages Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {TOUR_PACKAGES.map((pkg) => {
-            const pkgImage = imageMap[pkg.bgImage] || indiaImg;
+            const fallback = imageMap[pkg.fallbackImg] || indiaImg;
 
             return (
               <div
                 key={pkg.id}
-                className="group rounded-3xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 transition-all duration-300 overflow-hidden shadow-xl flex flex-col justify-between"
+                className="group rounded-2xl bg-white border border-slate-200 hover:border-amber-400 card-subtle transition-all duration-300 overflow-hidden shadow-sm hover:shadow-xl flex flex-col justify-between"
               >
                 <div>
-                  {/* Clean Image Banner */}
-                  <div className="relative h-48 w-full overflow-hidden bg-slate-900">
+                  {/* Image Banner */}
+                  <div className="relative h-44 w-full overflow-hidden bg-slate-100">
                     <img
-                      src={pkgImage}
+                      src={pkg.imageUrl || fallback}
                       alt={pkg.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = fallback;
+                      }}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
 
-                    {/* Simple Duration Pill */}
-                    <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-slate-200 text-xs font-medium border border-white/10">
-                      <Clock className="w-3.5 h-3.5 text-amber-400" />
+                    {/* Tag badge */}
+                    <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-amber-400 text-slate-950 text-[10px] font-black shadow-sm">
+                      {pkg.tag}
+                    </div>
+
+                    {/* Duration Pill */}
+                    <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-semibold">
+                      <Clock className="w-3 h-3 text-amber-400" />
                       <span>{pkg.duration}</span>
                     </div>
 
                     {/* Distance */}
-                    <div className="absolute bottom-3 left-3 flex items-center gap-1 text-slate-200 text-xs font-semibold">
-                      <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                    <div className="absolute bottom-2.5 left-2.5 flex items-center gap-1 text-white text-[11px] font-bold">
+                      <MapPin className="w-3 h-3 text-emerald-400" />
                       <span>{pkg.distance}</span>
                     </div>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                  <div className="p-4 sm:p-5">
+                    <h3 className="text-base font-black text-slate-900 mb-1.5 group-hover:text-amber-600 transition-colors line-clamp-1">
                       {pkg.title}
                     </h3>
 
-                    <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                    <p className="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">
                       {pkg.description}
                     </p>
 
                     {/* Key Highlights */}
-                    <div className="space-y-1.5 pt-3 border-t border-slate-800/80">
-                      <div className="text-[11px] font-semibold text-slate-400">Highlights:</div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {pkg.highlights.map((h, i) => (
+                    <div className="space-y-1 pt-2.5 border-t border-slate-100">
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Trip Highlights:</div>
+                      <div className="flex flex-wrap gap-1">
+                        {pkg.highlights.slice(0, 3).map((h, i) => (
                           <span
                             key={i}
-                            className="text-[11px] px-2.5 py-0.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-800"
+                            className="text-[10px] px-2 py-0.5 rounded-md bg-slate-50 text-slate-700 font-medium border border-slate-200"
                           >
                             {h}
                           </span>
@@ -95,11 +108,11 @@ export default function TourPackages() {
                 </div>
 
                 {/* Footer with Starting Price and Action */}
-                <div className="p-6 pt-0 mt-4">
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-800">
+                <div className="p-4 sm:p-5 pt-0">
+                  <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                     <div>
-                      <div className="text-[11px] text-slate-400">Starting from</div>
-                      <div className="text-xl font-black text-amber-400">
+                      <div className="text-[10px] text-slate-500 font-medium">Starts from</div>
+                      <div className="text-lg font-black text-amber-600">
                         {pkg.priceStarts}
                       </div>
                     </div>
@@ -107,9 +120,9 @@ export default function TourPackages() {
                     <button
                       type="button"
                       onClick={() => setActivePackage(pkg)}
-                      className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                      className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs shadow-sm transition-all flex items-center gap-1 cursor-pointer"
                     >
-                      <span>Book Now</span>
+                      <span>Book</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
