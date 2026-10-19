@@ -69,9 +69,6 @@ export default function WhyChooseUs() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
             Why Travelers Choose <span className="text-amber-400">Demo Travels</span>
           </h2>
-          <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
-            We built Demo Travels on two pillars: complete billing honesty and uncompromising rider comfort. Here is what sets us apart from conventional taxi operators.
-          </p>
         </div>
 
         {/* Live Metrics Grid */}

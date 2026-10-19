@@ -8,7 +8,6 @@ import FleetTariff from "../components/FleetTariff";
 import TourPackages from "../components/TourPackages";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
-import FaqSection from "../components/FaqSection";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 import FloatingActions from "../components/FloatingActions";
@@ -39,7 +38,6 @@ export default function HomePage() {
         <TourPackages />
         <WhyChooseUs />
         <Testimonials />
-        <FaqSection />
         <ContactSection />
       </main>
       <Footer />
