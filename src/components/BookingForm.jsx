@@ -305,7 +305,7 @@ export default function BookingForm() {
                       <input
                         type="text"
                         name="pickup"
-                        placeholder="e.g. Madurai"
+                        placeholder="e.g. Chennai (Central / Airport / OMR)"
                         value={formData.pickup}
                         onChange={handleChange}
                         className="w-full bg-slate-950 border border-slate-800 focus:border-amber-400 rounded-xl py-3 pl-10 pr-3 text-sm text-white focus:outline-none transition-colors"
@@ -323,7 +323,7 @@ export default function BookingForm() {
                       <input
                         type="text"
                         name="drop"
-                        placeholder="e.g. Chennai / Bangalore"
+                        placeholder="e.g. Pondicherry / Bangalore / Madurai"
                         value={formData.drop}
                         onChange={handleChange}
                         className="w-full bg-slate-950 border border-slate-800 focus:border-amber-400 rounded-xl py-3 pl-10 pr-3 text-sm text-white focus:outline-none transition-colors"

@@ -56,12 +56,12 @@ export default function PackageModal({ pkg, onClose }) {
 
     const [pickup, drop] = pkg.title.includes("→")
       ? pkg.title.split("→").map((s) => s.trim())
-      : ["Madurai", pkg.title];
+      : ["Chennai", pkg.title];
 
     const bookingPayload = {
       name: form.name,
       phone: form.phone,
-      pickup: pickup || "Madurai",
+      pickup: pickup || "Chennai",
       drop: drop || pkg.title,
       date: form.date,
       time: form.time,

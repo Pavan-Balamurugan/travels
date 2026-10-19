@@ -35,7 +35,7 @@ export default function Hero() {
 
         {/* Breathable Subtitle */}
         <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-          Doorstep pickup across Tamil Nadu and South India. Clean AC cabs, vetted professional chauffeurs, and 100% transparent per-km billing without hidden charges.
+          Doorstep pickup across Chennai to anywhere in South India. Clean AC cabs, vetted professional chauffeurs, and 100% transparent per-km billing without hidden charges.
         </p>
 
         {/* 3 Simple Value Points */}

@@ -36,7 +36,7 @@ export default function Services() {
       title: "Airport Transfers",
       badge: "Punctual Pickup",
       description:
-        "Reliable outstation airport drops and pickups for Madurai (IXM), Trichy (TRZ), Coimbatore (CJB), Chennai (MAA), and Bangalore (BLR) international airports.",
+        "Reliable outstation airport drops and pickups for Chennai International Airport (MAA), Bangalore (BLR), and regional airports with zero wait time.",
       icon: Plane,
       features: ["Flight tracking support", "Luggage assistance", "Zero delay guarantee"],
     },
@@ -45,7 +45,7 @@ export default function Services() {
       title: "Spiritual & Temple Tours",
       badge: "Sacred Shrines",
       description:
-        "Specialized darshan tours to sacred destinations: Rameswaram, Palani Murugan Temple, Tiruchendur, Meenakshi Temple, and Srirangam with devout drivers.",
+        "Specialized darshan tours from Chennai to Tirupati Balaji, Vellore Golden Temple, Kanchipuram, Madurai, and Rameswaram.",
       icon: Sparkles,
       features: ["Temple timing knowledge", "Senior citizen assistance", "Flexible darshan halts"],
     },

@@ -147,7 +147,7 @@ export default function ContactSection() {
             <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-xl bg-slate-950 h-64 relative">
               <iframe
                 title="Demo Travels Office Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.5599070332596!2d78.09269407479198!3d9.887239990212516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00cfaa81328677%3A0x896829f9e682d3b0!2sMadurai%20Solo%20Drop%20Taxi!5e0!3m2!1sen!2sin!4v1770565215813!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124443.2386767664!2d80.12644265!3d12.9806385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d88691f618d%3A0x6b24513d8d73b060!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 className="w-full h-full border-0 filter grayscale contrast-125 opacity-80 hover:opacity-100 transition-opacity"
                 loading="lazy"
               ></iframe>
