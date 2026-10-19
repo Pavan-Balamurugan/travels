@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Clock,
   Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 
 export default function Services() {
@@ -18,123 +19,127 @@ export default function Services() {
       title: "One-Way Drop Taxi",
       badge: "Save Up To 40%",
       description:
-        "Travel to any city across Tamil Nadu, Karnataka, Kerala, Andhra Pradesh & Telangana paying solely for the one-way distance. No empty return charges.",
+        "Travel from Chennai to anywhere in Tamil Nadu, Pondicherry, Bangalore, or Andhra Pradesh paying only for the one-way distance. No empty return taxi charges.",
       icon: Car,
-      features: ["Doorstep pickup & drop", "Strictly one-way billing", "No return toll / fuel charges"],
+      features: ["Doorstep pickup across Chennai", "Strictly one-way billing", "Zero return toll or return fuel"],
     },
     {
       id: "round-trip",
       title: "Round-Trip Outstation",
       badge: "Family & Vacation",
       description:
-        "Hassle-free multi-day journeys for family functions, festivals, holidays, and meetings. Dedicated chauffeur stays with your vehicle throughout.",
+        "Convenient multi-day journeys for family festivals, weekend getaways, and business visits. Dedicated professional chauffeur stays with your car throughout.",
       icon: Compass,
-      features: ["Multiple stopovers allowed", "Fixed transparent daily bata", "Customizable itineraries"],
+      features: ["Multiple sightseeing stops", "Transparent flat daily driver bata", "Fully customizable route plan"],
     },
     {
       id: "airport",
-      title: "Airport Transfers",
-      badge: "Punctual Pickup",
+      title: "Chennai Airport (MAA) Taxi",
+      badge: "24/7 Airport Service",
       description:
-        "Reliable outstation airport drops and pickups for Chennai International Airport (MAA), Bangalore (BLR), and regional airports with zero wait time.",
+        "Punctual airport drops and pickups for Chennai International Airport (MAA). Live flight status monitoring with zero wait time guarantee.",
       icon: Plane,
-      features: ["Flight tracking support", "Luggage assistance", "Zero delay guarantee"],
+      features: ["Pillar-side pickup coordination", "Luggage loading assistance", "Available 24/7 day and night"],
     },
     {
       id: "pilgrimage",
-      title: "Spiritual & Temple Tours",
-      badge: "Sacred Shrines",
+      title: "Tamil Nadu Temple Circuits",
+      badge: "Devotional Darshan",
       description:
-        "Specialized darshan tours from Chennai to Tirupati Balaji, Vellore Golden Temple, Kanchipuram, Madurai, and Rameswaram.",
+        "Specialized darshan tours from Chennai to Tirupati Balaji, Vellore Sripuram, Kanchipuram, Tiruvannamalai, Madurai Meenakshi, and Rameswaram.",
       icon: Sparkles,
-      features: ["Temple timing knowledge", "Senior citizen assistance", "Flexible darshan halts"],
+      features: ["Temple timing knowledge", "Senior citizen friendly driver", "Flexible darshan queue waiting"],
     },
     {
       id: "hill-station",
-      title: "Hill Station Escapes",
+      title: "Hill Station Tours",
       badge: "Ghat Specialists",
       description:
-        "Scenic journeys to Kodaikanal, Munnar, Ooty, Valparai, and Megamalai. Driven by experienced drivers trained in hairpin bends and mist conditions.",
+        "Scenic mountain trips to Kodaikanal, Ooty, Coonoor, Yercaud, and Valparai. Handled by experienced drivers trained in ghat hairpin turns and mist driving.",
       icon: Mountain,
-      features: ["Smooth mountain suspension", "Viewpoint halts on request", "Safe hill driving"],
+      features: ["High ground clearance vehicles", "Scenic viewpoint photo stops", "Comfortable hill suspension"],
     },
     {
       id: "corporate",
-      title: "Corporate & Event Fleet",
+      title: "Corporate & Wedding Fleet",
       badge: "Executive Class",
       description:
-        "Punctual executive cabs for business summits, wedding guest logistics, VIP delegations, and corporate conventions with formal GST billing.",
+        "Executive sedans and Innova Crystas for corporate summits, wedding guest airport logistics, VIP delegations, and business travel with GST invoices.",
       icon: Building2,
-      features: ["GST invoice provided", "Executive clean sedans", "Dedicated account support"],
+      features: ["Official GST invoice provided", "Impeccably clean premium cars", "Priority business dispatch"],
     },
   ];
 
-  return (
-    <section id="services" className="py-20 lg:py-28 bg-slate-900/60 relative overflow-hidden">
-      {/* Decorative gradient glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none"></div>
+  const handleBookService = () => {
+    const bookElem = document.getElementById("book");
+    if (bookElem) {
+      bookElem.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
+  return (
+    <section id="services" className="py-10 sm:py-14 bg-white relative overflow-hidden border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-semibold mb-3">
-            <Car className="w-3.5 h-3.5" />
-            <span>Tailored Travel Solutions</span>
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold mb-2.5">
+            <Car className="w-3.5 h-3.5 text-amber-600" />
+            <span>Reliable Travel Solutions</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Comprehensive <span className="text-amber-400">Taxi Services</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+            Our Taxi Services in <span className="text-amber-500">Chennai</span>
           </h2>
-          <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
-            From quick one-way city drops to extended mountain vacations and spiritual temple circuits, Demo Travels delivers safe, comfortable, and affordable rides.
+          <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Whether you need a quick one-way drop, airport transit, or an extended holiday with family, Chennai Travels has you covered.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {serviceList.map((service) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.id}
-                className="group p-7 rounded-3xl bg-slate-950/70 border border-slate-800 hover:border-amber-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/10 hover:-translate-y-1.5 flex flex-col justify-between"
+                className="group p-6 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 card-subtle transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors duration-300 shadow-md">
-                      <Icon className="w-6 h-6" />
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-11 h-11 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors duration-200 shadow-2xs group-hover:scale-105">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-300 border border-amber-400/20">
+                    <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-900 text-amber-400 border border-slate-800 shadow-2xs">
                       {service.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 mb-1.5 group-hover:text-amber-600 transition-colors">
                     {service.title}
                   </h3>
 
-                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                  <p className="text-slate-600 text-xs leading-relaxed mb-4">
                     {service.description}
                   </p>
 
-                  <ul className="space-y-2 mb-6 border-t border-slate-800/80 pt-4">
+                  <ul className="space-y-1.5 mb-5 border-t border-slate-100 pt-3">
                     {service.features.map((f, i) => (
-                      <li key={i} className="flex items-center gap-2 text-xs text-slate-300">
-                        <div className="w-1.5 h-1.5 rounded-full bg-amber-400"></div>
+                      <li key={i} className="flex items-center gap-2 text-xs text-slate-700">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                         <span>{f}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <a
-                  href="#book"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors group/link mt-2"
+                <button
+                  type="button"
+                  onClick={handleBookService}
+                  className="w-full py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-amber-400 text-slate-800 hover:text-slate-950 font-bold text-xs border border-slate-200 hover:border-amber-400 transition-all flex items-center justify-center gap-1.5 cursor-pointer mt-1"
                 >
-                  <span>Book this service</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-                </a>
+                  <span>Book This Service</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
             );
           })}

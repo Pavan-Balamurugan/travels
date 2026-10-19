@@ -3,85 +3,84 @@ import {
   ShieldCheck,
   Clock,
   Coins,
-  Smile,
   Award,
   Headphones,
-  CheckCircle2,
   Car,
   MapPin,
+  CheckCircle2,
 } from "lucide-react";
 import { COMPANY_INFO } from "../data/travelData";
 
 export default function WhyChooseUs() {
   const stats = [
-    { label: "Successful Rides", value: COMPANY_INFO.completedTrips },
-    { label: "Customer Rating", value: `${COMPANY_INFO.rating} / 5.0` },
-    { label: "Verified Drivers", value: COMPANY_INFO.activeDrivers },
+    { label: "Successful Trips", value: COMPANY_INFO.completedTrips },
+    { label: "Google Rating", value: `${COMPANY_INFO.rating} ★` },
+    { label: "Verified Chauffeurs", value: COMPANY_INFO.activeDrivers },
     { label: "Cities Connected", value: COMPANY_INFO.citiesCovered },
   ];
 
   const benefits = [
     {
       icon: Coins,
-      title: "Strictly One-Way Drop Pricing",
-      desc: "Save up to 40% immediately. Pay only for the distance you actually ride, with no empty return km, return toll fees, or return driver allowances.",
+      title: "Strictly One-Way Drop Fare",
+      desc: "Save up to 40% immediately. Pay solely for the distance you actually ride — no return empty km, return toll fees, or return driver allowances.",
     },
     {
       icon: Clock,
-      title: "100% On-Time Doorstep Pickup",
-      desc: "Your cab arrives at your doorstep 15 minutes before the scheduled time. Real-time driver tracking ensures zero anxiety on travel morning.",
+      title: "Guaranteed On-Time Pickup",
+      desc: "Your cab arrives at your doorstep in Chennai 15 minutes before the scheduled time with complete driver contact and vehicle registration details.",
     },
     {
       icon: ShieldCheck,
-      title: "Vetted & Background-Checked Drivers",
-      desc: "All chauffeurs have clean background verification, 5+ years of highway driving experience, polite demeanor, and local route familiarity.",
+      title: "Police-Verified Senior Drivers",
+      desc: "Every chauffeur in our fleet has 5+ years of highway driving experience, clean records, polite demeanor, and in-depth South Indian route knowledge.",
     },
     {
       icon: Car,
-      title: "Sanitized & Late-Model Fleet",
-      desc: "Every vehicle is deep-cleaned and air-conditioned before dispatch. Travel in well-maintained, smooth-riding sedans and SUVs.",
+      title: "Deep Cleaned & Sanitized Cabs",
+      desc: "Every sedan and SUV is inspected, washed, and sanitized before departure. Travel in smooth-riding, dual-zone AC comfort with ample boot space.",
     },
     {
       icon: Headphones,
-      title: "24/7 Customer Care & Assistance",
-      desc: "Round-the-clock telephone and WhatsApp helpline to support you through early morning departures, late-night arrivals, or route adjustments.",
+      title: "24/7 Helpline & Dispatch",
+      desc: "Round-the-clock live telephone and WhatsApp support for late-night airport arrivals, early-morning departures, or sudden itinerary updates.",
     },
     {
       icon: Award,
-      title: "Zero Hidden Charges Policy",
-      desc: "Transparent per-km rate, clear driver allowance, and exact digital bills. No surprise surcharge, night charges, or hidden platform commissions.",
+      title: "Zero Hidden Fees Guarantee",
+      desc: "Transparent per-km rate, clear driver allowance, and exact digital receipts. No surge multipliers, peak hour fees, or surprise platform charges.",
     },
   ];
 
   return (
-    <section id="why-us" className="py-20 lg:py-28 bg-slate-950 relative overflow-hidden">
-      {/* Background Lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
-
+    <section id="why-us" className="py-10 sm:py-14 bg-slate-50 relative overflow-hidden border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-semibold mb-3">
-            <Award className="w-3.5 h-3.5" />
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold mb-2.5">
+            <Award className="w-3.5 h-3.5 text-amber-600" />
             <span>The Gold Standard in Highway Travel</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Why Travelers Choose <span className="text-amber-400">Demo Travels</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+            Why Travelers Choose <span className="text-amber-500">Chennai Travels</span>
           </h2>
+          <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Over a decade of punctual, economical, and trusted outstation travel across Tamil Nadu and South India.
+          </p>
         </div>
 
         {/* Live Metrics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 sm:mb-10">
           {stats.map((s, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 text-center backdrop-blur-xl shadow-lg hover:border-amber-400/40 transition-colors"
+              className="p-5 rounded-2xl bg-slate-900 border border-slate-800 text-center shadow-sm card-subtle hover:border-amber-400/50"
             >
-              <div className="text-3xl sm:text-4xl font-extrabold text-amber-400 mb-1">
+              <div className="text-2xl sm:text-3xl font-black text-amber-400 mb-0.5">
                 {s.value}
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-slate-300">
+              <div className="text-xs font-bold text-slate-300">
                 {s.label}
               </div>
             </div>
@@ -89,19 +88,19 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {benefits.map((b, idx) => {
             const Icon = b.icon;
             return (
               <div
                 key={idx}
-                className="p-7 rounded-3xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/90 transition-all duration-300"
+                className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 card-subtle transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400 mb-5">
-                  <Icon className="w-6 h-6" />
+                <div className="w-11 h-11 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                  <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">{b.title}</h3>
-                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                <h3 className="text-base font-bold text-slate-900 mb-1.5">{b.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
                   {b.desc}
                 </p>
               </div>
@@ -110,24 +109,24 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Safety & Sanitization Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-8 sm:mt-10 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-amber-100 via-amber-50 to-white border border-amber-300 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xs">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-              <ShieldCheck className="w-8 h-8" />
+            <div className="w-12 h-12 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center shrink-0 shadow-sm">
+              <ShieldCheck className="w-7 h-7" />
             </div>
             <div>
-              <h4 className="text-lg font-bold text-white">Your Safety & Comfort Is Guaranteed</h4>
-              <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-                SOS emergency response, live GPS location tracking, and verified chauffeurs on every trip.
+              <h4 className="text-base sm:text-lg font-black text-slate-900">Your Safety & Comfort Is Guaranteed</h4>
+              <p className="text-xs text-slate-600 mt-0.5">
+                Fastag toll payments, live GPS tracking, and vetted highway chauffeurs on every trip.
               </p>
             </div>
           </div>
 
           <a
             href="#book"
-            className="shrink-0 px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm shadow-lg transition-transform hover:scale-105"
+            className="shrink-0 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-sm transition-all"
           >
-            Experience Premium Travel
+            Book Your Ride Now
           </a>
         </div>
 
